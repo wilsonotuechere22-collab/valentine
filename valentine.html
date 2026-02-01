@@ -1,0 +1,1418 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Will You Be My Valentine? 💕</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500&family=Dancing+Script:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --rose-red: #d4526e;
+        --deep-rose: #a83a52;
+        --blush-pink: #ffc6d3;
+        --cream: #fff5f7;
+        --gold: #d4af37;
+        --deep-purple: #4a1942;
+        --light-pink: #ffe5ec;
+      }
+
+      body {
+        font-family: "Cormorant Garamond", serif;
+        background: linear-gradient(
+          135deg,
+          #ffeef3 0%,
+          #ffe5ec 25%,
+          #ffd6e0 75%,
+          #ffcbd6 100%
+        );
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+        cursor:
+          url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><text y="15" font-size="16">💕</text></svg>'),
+          auto;
+      }
+
+      /* Animated gradient background */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+          radial-gradient(
+            circle at 20% 50%,
+            rgba(255, 182, 193, 0.3) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(255, 105, 180, 0.3) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 40% 20%,
+            rgba(255, 192, 203, 0.3) 0%,
+            transparent 50%
+          );
+        animation: gradientShift 15s ease infinite;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      @keyframes gradientShift {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.8;
+          transform: scale(1.1);
+        }
+      }
+
+      /* Enhanced floating particles */
+      .particle-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 2;
+        overflow: hidden;
+      }
+
+      .particle {
+        position: absolute;
+        font-size: 1.5rem;
+        opacity: 0.4;
+        animation: floatParticle 12s infinite ease-in-out;
+        filter: drop-shadow(0 0 3px rgba(255, 105, 180, 0.5));
+      }
+
+      @keyframes floatParticle {
+        0% {
+          transform: translateY(100vh) rotate(0deg) scale(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.6;
+          transform: translateY(90vh) rotate(45deg) scale(1);
+        }
+        90% {
+          opacity: 0.6;
+          transform: translateY(-10vh) rotate(315deg) scale(1);
+        }
+        100% {
+          transform: translateY(-20vh) rotate(360deg) scale(0);
+          opacity: 0;
+        }
+      }
+
+      /* Mouse follower effect */
+      .cursor-follower {
+        position: fixed;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 105, 180, 0.3),
+          transparent
+        );
+        pointer-events: none;
+        z-index: 9999;
+        transition: transform 0.15s ease;
+        mix-blend-mode: screen;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 60px 30px;
+        position: relative;
+        z-index: 10;
+      }
+
+      /* Enhanced header with glow effect */
+      .header {
+        text-align: center;
+        margin-bottom: 80px;
+        animation: fadeInDown 1.2s ease-out;
+        position: relative;
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 5rem;
+        background: linear-gradient(
+          135deg,
+          var(--rose-red) 0%,
+          var(--deep-rose) 50%,
+          #d4526e 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 700;
+        margin-bottom: 20px;
+        letter-spacing: 2px;
+        text-shadow: 0 0 30px rgba(212, 82, 110, 0.3);
+        animation: titleGlow 3s ease-in-out infinite;
+        position: relative;
+      }
+
+      @keyframes titleGlow {
+        0%,
+        100% {
+          filter: drop-shadow(0 0 10px rgba(212, 82, 110, 0.5));
+        }
+        50% {
+          filter: drop-shadow(0 0 25px rgba(212, 82, 110, 0.8));
+        }
+      }
+
+      .subtitle {
+        font-size: 1.8rem;
+        color: var(--deep-purple);
+        font-weight: 300;
+        font-style: italic;
+        animation: fadeIn 1.5s ease-out 0.3s backwards;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* Glass morphism cards */
+      .cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 40px;
+        margin-bottom: 60px;
+        perspective: 1000px;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 25px;
+        padding: 40px;
+        box-shadow:
+          0 8px 32px rgba(212, 82, 110, 0.15),
+          inset 0 1px 0 rgba(255, 255, 255, 0.5),
+          0 20px 60px rgba(212, 82, 110, 0.1);
+        position: relative;
+        overflow: hidden;
+        transform: translateY(0) rotateX(0deg);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        animation: fadeInUp 1s ease-out backwards;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 105, 180, 0.15) 0%,
+          transparent 70%
+        );
+        opacity: 0;
+        transition:
+          opacity 0.5s,
+          transform 0.5s;
+      }
+
+      .card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .card:hover {
+        transform: translateY(-20px) rotateX(5deg) scale(1.03);
+        box-shadow:
+          0 15px 50px rgba(212, 82, 110, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.7),
+          0 30px 80px rgba(212, 82, 110, 0.2);
+      }
+
+      .card:hover::before {
+        opacity: 1;
+        transform: rotate(45deg);
+      }
+
+      .card:hover::after {
+        left: 100%;
+      }
+
+      .card:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+      .card:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+      .card:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(60px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .card-icon {
+        font-size: 4.5rem;
+        margin-bottom: 20px;
+        display: block;
+        animation: iconBounce 2s infinite;
+        filter: drop-shadow(0 5px 15px rgba(212, 82, 110, 0.3));
+        transition: transform 0.3s;
+      }
+
+      .card:hover .card-icon {
+        transform: scale(1.2) rotate(10deg);
+        animation: iconSpin 0.6s ease;
+      }
+
+      @keyframes iconBounce {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
+        }
+        50% {
+          transform: translateY(-10px) scale(1.05);
+        }
+      }
+
+      @keyframes iconSpin {
+        0% {
+          transform: rotate(0deg) scale(1);
+        }
+        50% {
+          transform: rotate(180deg) scale(1.3);
+        }
+        100% {
+          transform: rotate(360deg) scale(1.2);
+        }
+      }
+
+      .card-title {
+        font-family: "Playfair Display", serif;
+        font-size: 2.2rem;
+        color: var(--rose-red);
+        margin-bottom: 15px;
+        font-weight: 600;
+        transition: all 0.3s;
+      }
+
+      .card:hover .card-title {
+        color: var(--deep-rose);
+        transform: translateX(5px);
+      }
+
+      .card-text {
+        font-size: 1.3rem;
+        color: var(--deep-purple);
+        line-height: 1.8;
+        font-weight: 300;
+        transition: color 0.3s;
+      }
+
+      .card:hover .card-text {
+        color: #3a0a32;
+      }
+
+      /* Enhanced proposal section with animated border */
+      .proposal-section {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 40px;
+        padding: 80px 60px;
+        text-align: center;
+        box-shadow:
+          0 30px 100px rgba(212, 82, 110, 0.25),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        position: relative;
+        overflow: hidden;
+        animation: fadeInUp 1s ease-out 0.8s backwards;
+        border: 2px solid transparent;
+        background-clip: padding-box;
+      }
+
+      .proposal-section::before {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        border-radius: 40px;
+        padding: 2px;
+        background: linear-gradient(
+          135deg,
+          var(--rose-red),
+          var(--gold),
+          var(--blush-pink),
+          var(--rose-red)
+        );
+        -webkit-mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        animation: borderRotate 4s linear infinite;
+        pointer-events: none;
+      }
+
+      @keyframes borderRotate {
+        0% {
+          filter: hue-rotate(0deg);
+        }
+        100% {
+          filter: hue-rotate(360deg);
+        }
+      }
+
+      /* Animated heart decorations */
+      .proposal-section::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 105, 180, 0.1),
+          transparent
+        );
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        animation: pulse 3s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 0.5;
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.3);
+          opacity: 0.8;
+        }
+      }
+
+      .heart-decor {
+        position: absolute;
+        font-size: 3rem;
+        opacity: 0.15;
+        animation: heartFloat 4s infinite ease-in-out;
+      }
+
+      .heart-decor:nth-child(1) {
+        top: 20px;
+        left: 40px;
+        animation-delay: 0s;
+      }
+      .heart-decor:nth-child(2) {
+        top: 20px;
+        right: 40px;
+        animation-delay: 1s;
+      }
+      .heart-decor:nth-child(3) {
+        bottom: 20px;
+        left: 40px;
+        animation-delay: 2s;
+      }
+      .heart-decor:nth-child(4) {
+        bottom: 20px;
+        right: 40px;
+        animation-delay: 3s;
+      }
+
+      @keyframes heartFloat {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
+        }
+        25% {
+          transform: translateY(-10px) scale(1.2);
+        }
+        50% {
+          transform: translateY(-5px) scale(1.1);
+        }
+        75% {
+          transform: translateY(-15px) scale(1.15);
+        }
+      }
+
+      .big-question {
+        font-family: "Dancing Script", cursive;
+        font-size: 4.5rem;
+        background: linear-gradient(
+          135deg,
+          var(--rose-red),
+          var(--deep-rose),
+          #ff69b4
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 30px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        animation: questionPulse 2s ease-in-out infinite;
+        position: relative;
+        z-index: 1;
+      }
+
+      @keyframes questionPulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      .proposal-text {
+        font-size: 1.6rem;
+        color: var(--deep-purple);
+        margin-bottom: 50px;
+        line-height: 1.9;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        font-weight: 300;
+        position: relative;
+        z-index: 1;
+      }
+
+      .buttons {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
+      }
+
+      .btn {
+        padding: 20px 60px;
+        font-size: 1.5rem;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-family: "Playfair Display", serif;
+        font-weight: 600;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.6s,
+          height 0.6s;
+      }
+
+      .btn:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .btn-yes {
+        background: linear-gradient(
+          135deg,
+          var(--rose-red) 0%,
+          var(--deep-rose) 100%
+        );
+        color: white;
+        position: relative;
+        z-index: 1;
+      }
+
+      .btn-yes:hover {
+        transform: scale(1.15) rotate(-3deg);
+        box-shadow:
+          0 20px 50px rgba(212, 82, 110, 0.5),
+          0 0 30px rgba(255, 105, 180, 0.6);
+      }
+
+      .btn-yes::after {
+        content: "💕";
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.2rem;
+        animation: heartBeat 1s infinite;
+      }
+
+      @keyframes heartBeat {
+        0%,
+        100% {
+          transform: translateY(-50%) scale(1);
+        }
+        25%,
+        75% {
+          transform: translateY(-50%) scale(1.3);
+        }
+        50% {
+          transform: translateY(-50%) scale(1.1);
+        }
+      }
+
+      .btn-no {
+        background: white;
+        color: var(--deep-rose);
+        border: 3px solid var(--rose-red);
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .btn-no:hover {
+        background: var(--cream);
+        transform: scale(1.05);
+      }
+
+      /* Rose decorations with 3D effect */
+      .rose-decoration {
+        position: absolute;
+        font-size: 5rem;
+        opacity: 0.12;
+        pointer-events: none;
+        filter: drop-shadow(0 10px 20px rgba(212, 82, 110, 0.3));
+        animation: rose3D 6s infinite ease-in-out;
+      }
+
+      .rose-1 {
+        top: 10%;
+        left: 5%;
+        animation-delay: 0s;
+      }
+      .rose-2 {
+        top: 20%;
+        right: 8%;
+        animation-delay: 1.5s;
+      }
+      .rose-3 {
+        bottom: 15%;
+        left: 10%;
+        animation-delay: 3s;
+      }
+      .rose-4 {
+        bottom: 25%;
+        right: 5%;
+        animation-delay: 4.5s;
+      }
+
+      @keyframes rose3D {
+        0%,
+        100% {
+          transform: perspective(500px) rotateY(-15deg) rotateX(10deg);
+        }
+        50% {
+          transform: perspective(500px) rotateY(15deg) rotateX(-10deg);
+        }
+      }
+
+      /* Enhanced modal with blur effect */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(74, 25, 66, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+        animation: fadeIn 0.5s;
+        overflow-y: auto;
+        padding: 20px;
+      }
+
+      .modal-content {
+        background: linear-gradient(135deg, #ffffff 0%, #fff5f7 100%);
+        padding: 60px;
+        border-radius: 40px;
+        text-align: center;
+        max-width: 1100px;
+        animation: modalAppear 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        position: relative;
+        margin: auto;
+        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.3);
+        border: 3px solid var(--blush-pink);
+      }
+
+      @keyframes modalAppear {
+        from {
+          transform: scale(0.5) rotate(-10deg);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1) rotate(0deg);
+          opacity: 1;
+        }
+      }
+
+      .modal-icon {
+        font-size: 7rem;
+        margin-bottom: 20px;
+        animation: iconCelebrate 1s infinite;
+        filter: drop-shadow(0 10px 30px rgba(255, 105, 180, 0.5));
+      }
+
+      @keyframes iconCelebrate {
+        0%,
+        100% {
+          transform: scale(1) rotate(0deg);
+        }
+        25% {
+          transform: scale(1.2) rotate(-10deg);
+        }
+        50% {
+          transform: scale(1.1) rotate(10deg);
+        }
+        75% {
+          transform: scale(1.15) rotate(-5deg);
+        }
+      }
+
+      .modal-title {
+        font-family: "Playfair Display", serif;
+        font-size: 3.5rem;
+        background: linear-gradient(
+          135deg,
+          var(--rose-red),
+          #ff69b4,
+          var(--deep-rose)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 20px;
+        font-weight: 700;
+        animation: titleShine 2s ease-in-out infinite;
+      }
+
+      @keyframes titleShine {
+        0%,
+        100% {
+          filter: brightness(1);
+        }
+        50% {
+          filter: brightness(1.3);
+        }
+      }
+
+      .modal-text {
+        font-size: 1.4rem;
+        color: var(--deep-purple);
+        line-height: 1.9;
+        margin-bottom: 20px;
+      }
+
+      .photo-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        margin: 50px 0;
+        animation: fadeInUp 0.8s ease-out 0.5s backwards;
+      }
+
+      .photo-frame {
+        border-radius: 25px;
+        overflow: hidden;
+        box-shadow:
+          0 20px 50px rgba(212, 82, 110, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        border: 5px solid var(--blush-pink);
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        background: white;
+        padding: 12px;
+        position: relative;
+      }
+
+      .photo-frame::before {
+        content: "✨";
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 1.5rem;
+        opacity: 0;
+        transition: opacity 0.3s;
+        z-index: 10;
+        filter: drop-shadow(0 2px 5px rgba(255, 215, 0, 0.8));
+      }
+
+      .photo-frame:hover::before {
+        opacity: 1;
+        animation: sparkle 0.6s ease;
+      }
+
+      @keyframes sparkle {
+        0%,
+        100% {
+          transform: scale(1) rotate(0deg);
+        }
+        50% {
+          transform: scale(1.3) rotate(180deg);
+        }
+      }
+
+      .photo-frame:hover {
+        transform: scale(1.08) rotate(-2deg);
+        box-shadow:
+          0 30px 70px rgba(212, 82, 110, 0.4),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        border-color: var(--rose-red);
+      }
+
+      .photo-frame img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        display: block;
+        border-radius: 18px;
+        transition: transform 0.5s;
+      }
+
+      .photo-frame:hover img {
+        transform: scale(1.05);
+      }
+
+      .bouquet {
+        font-size: 9rem;
+        margin: 30px 0;
+        animation: bouquetReveal 1.2s ease-out;
+        filter: drop-shadow(0 10px 30px rgba(255, 105, 180, 0.4));
+      }
+
+      @keyframes bouquetReveal {
+        from {
+          opacity: 0;
+          transform: scale(0.2) rotate(-30deg);
+        }
+        60% {
+          transform: scale(1.1) rotate(5deg);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) rotate(0deg);
+        }
+      }
+
+      .love-message {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 245, 247, 0.9) 0%,
+          rgba(255, 229, 236, 0.9) 100%
+        );
+        backdrop-filter: blur(10px);
+        padding: 45px;
+        border-radius: 25px;
+        margin-top: 35px;
+        border: 2px solid var(--blush-pink);
+        animation: fadeInUp 0.8s ease-out 0.8s backwards;
+        box-shadow: 0 15px 40px rgba(212, 82, 110, 0.15);
+      }
+
+      .close-modal {
+        margin-top: 35px;
+        padding: 18px 50px;
+        background: linear-gradient(135deg, var(--rose-red), var(--deep-rose));
+        color: white;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        font-size: 1.3rem;
+        font-family: "Playfair Display", serif;
+        font-weight: 600;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        box-shadow: 0 10px 30px rgba(212, 82, 110, 0.3);
+      }
+
+      .close-modal:hover {
+        background: linear-gradient(135deg, var(--deep-rose), #8b2e42);
+        transform: scale(1.1) translateY(-3px);
+        box-shadow: 0 15px 40px rgba(212, 82, 110, 0.5);
+      }
+
+      .photo-caption {
+        margin-top: 12px;
+        font-family: "Dancing Script", cursive;
+        color: var(--deep-rose);
+        font-size: 1.3rem;
+        font-weight: 700;
+      }
+
+      /* Sparkle effect on hover */
+      .sparkle {
+        position: fixed;
+        pointer-events: none;
+        font-size: 1.5rem;
+        z-index: 9999;
+        animation: sparkleAnim 0.8s ease-out forwards;
+      }
+
+      @keyframes sparkleAnim {
+        0% {
+          transform: scale(0) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1.5) rotate(180deg) translateY(-50px);
+          opacity: 0;
+        }
+      }
+
+      /* Responsive design */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 3.5rem;
+        }
+        .subtitle {
+          font-size: 1.4rem;
+        }
+        .big-question {
+          font-size: 3rem;
+        }
+        .proposal-text {
+          font-size: 1.3rem;
+        }
+        .cards-container {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+        .proposal-section {
+          padding: 50px 30px;
+        }
+        .btn {
+          padding: 16px 40px;
+          font-size: 1.3rem;
+        }
+        .modal-content {
+          padding: 40px 25px;
+        }
+        .modal-title {
+          font-size: 2.5rem;
+        }
+        .photo-gallery {
+          grid-template-columns: 1fr;
+          gap: 25px;
+        }
+        .bouquet {
+          font-size: 6rem;
+        }
+        .card {
+          padding: 30px;
+        }
+        .card-icon {
+          font-size: 3.5rem;
+        }
+        .card-title {
+          font-size: 1.8rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 2.5rem;
+        }
+        .big-question {
+          font-size: 2.2rem;
+        }
+        .container {
+          padding: 40px 20px;
+        }
+        .proposal-section {
+          padding: 40px 20px;
+        }
+        .btn {
+          padding: 14px 30px;
+          font-size: 1.1rem;
+          gap: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Particle container -->
+    <div class="particle-container" id="particleContainer"></div>
+
+    <!-- Cursor follower -->
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <!-- Rose decorations -->
+    <div class="rose-decoration rose-1">🌹</div>
+    <div class="rose-decoration rose-2">💕</div>
+    <div class="rose-decoration rose-3">🌺</div>
+    <div class="rose-decoration rose-4">🌹</div>
+
+    <div class="container">
+      <div class="header">
+        <h1>A Valentine's Proposal</h1>
+        <p class="subtitle">Three reasons why you should say yes ✨</p>
+      </div>
+
+      <div class="cards-container">
+        <div class="card">
+          <span class="card-icon">💝</span>
+          <h2 class="card-title">Every Moment Together</h2>
+          <p class="card-text">
+            Your amazing baby, every moment i spend with you is amazing, a
+            Although I'm always sleepy around you, just know i love you baby and
+            you mean the world to me.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="card-icon">🌹</span>
+          <h2 class="card-title">You're Simply Incredible</h2>
+          <p class="card-text">
+            Your smile lights up the room, your laugh is my favorite sound,
+            weird but cute in its own way and your kindness touches everyone
+            around you even if its too much sometimes. You're not just
+            beautiful, you're extraordinary in every way.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="card-icon">💕</span>
+          <h2 class="card-title">A Future Together</h2>
+          <p class="card-text">
+            I dream of countless adventures with you, of building memories that
+            will last forever. I want to be there for all your ups and downs,
+            celebrating every triumph by your side.
+          </p>
+        </div>
+      </div>
+
+      <div class="proposal-section">
+        <div class="heart-decor">💕</div>
+        <div class="heart-decor">💖</div>
+        <div class="heart-decor">💗</div>
+        <div class="heart-decor">💝</div>
+
+        <h2 class="big-question">Will You Be My Valentine?</h2>
+        <p class="proposal-text">
+          This Valentine's Day, I'm asking/threatening you to be my Number one
+          girl on this day P.S: You're always my girl so don't mind the
+          formalities. What do you say princess? 💕
+        </p>
+        <div class="buttons">
+          <button class="btn btn-yes" onclick="sayYes()">Yes! 💕</button>
+          <button class="btn btn-no" id="noBtn" onclick="sayNo(event)">
+            Let me think...
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-icon" id="modalIcon">🎉</div>
+        <h2 class="modal-title" id="modalTitle">Amazing!</h2>
+        <div id="modalBody"></div>
+        <button class="close-modal" onclick="closeModal()">Close 💕</button>
+      </div>
+    </div>
+
+    <script>
+      // Particle system
+      function createParticles() {
+        const container = document.getElementById("particleContainer");
+        const particles = [
+          "💕",
+          "💖",
+          "💗",
+          "💝",
+          "💓",
+          "❤️",
+          "🌹",
+          "🌸",
+          "✨",
+          "⭐",
+        ];
+
+        setInterval(() => {
+          const particle = document.createElement("div");
+          particle.className = "particle";
+          particle.textContent =
+            particles[Math.floor(Math.random() * particles.length)];
+          particle.style.left = Math.random() * 100 + "%";
+          particle.style.animationDuration = Math.random() * 8 + 8 + "s";
+          particle.style.fontSize = Math.random() * 1.5 + 1 + "rem";
+          particle.style.animationDelay = Math.random() * 2 + "s";
+
+          container.appendChild(particle);
+
+          setTimeout(() => particle.remove(), 14000);
+        }, 800);
+      }
+
+      // Cursor follower
+      const follower = document.getElementById("cursorFollower");
+      let mouseX = 0,
+        mouseY = 0;
+      let followerX = 0,
+        followerY = 0;
+
+      document.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      function animateFollower() {
+        const dx = mouseX - followerX;
+        const dy = mouseY - followerY;
+
+        followerX += dx * 0.1;
+        followerY += dy * 0.1;
+
+        follower.style.left = followerX - 20 + "px";
+        follower.style.top = followerY - 20 + "px";
+
+        requestAnimationFrame(animateFollower);
+      }
+
+      // Sparkle effect on click
+      document.addEventListener("click", (e) => {
+        createSparkle(e.clientX, e.clientY);
+      });
+
+      function createSparkle(x, y) {
+        const sparkles = ["✨", "⭐", "💫", "🌟"];
+        for (let i = 0; i < 5; i++) {
+          const sparkle = document.createElement("div");
+          sparkle.className = "sparkle";
+          sparkle.textContent =
+            sparkles[Math.floor(Math.random() * sparkles.length)];
+          sparkle.style.left = x + (Math.random() * 40 - 20) + "px";
+          sparkle.style.top = y + (Math.random() * 40 - 20) + "px";
+          document.body.appendChild(sparkle);
+
+          setTimeout(() => sparkle.remove(), 800);
+        }
+      }
+
+      // Enhanced "No" button behavior
+      let noClickCount = 0;
+      const noResponses = [
+        {
+          text: "What are you even thinking? 🤔",
+          color: "#ffa500",
+          effect: "spin",
+        },
+        { text: "Better click yes ohh 😏", color: "#ff69b4", effect: "pulse" },
+        { text: "I'll bite you 😤", color: "#ff4444", effect: "shake" },
+        { text: "Stop playing with me 🙄", color: "#9370db", effect: "bounce" },
+        {
+          text: "You know you want to say yes 💕",
+          color: "#ff1493",
+          effect: "wiggle",
+        },
+        { text: "Come on now... 😊", color: "#ffb6c1", effect: "rotate" },
+        {
+          text: "Really? You're still clicking me? 😅",
+          color: "#ffd700",
+          effect: "jiggle",
+        },
+        { text: "Just say yes already! 💝", color: "#dc143c", effect: "throb" },
+      ];
+
+      function sayNo(event) {
+        event.preventDefault();
+        const noBtn = document.getElementById("noBtn");
+        const response = noResponses[noClickCount % noResponses.length];
+        noBtn.textContent = response.text;
+
+        // Apply color variation
+        noBtn.style.borderColor = response.color;
+        noBtn.style.color = response.color;
+
+        // Apply animation variation
+        noBtn.style.animation = `none`;
+        setTimeout(() => {
+          noBtn.style.animation = `${response.effect} 0.6s ease-in-out`;
+        }, 10);
+
+        noClickCount++;
+
+        // Enhanced evasion on mobile and desktop
+        if (window.innerWidth > 768) {
+          const maxX = window.innerWidth - 250;
+          const maxY = window.innerHeight - 100;
+          const randomX = Math.random() * maxX;
+          const randomY = Math.random() * maxY;
+
+          noBtn.style.position = "fixed";
+          noBtn.style.left = randomX + "px";
+          noBtn.style.top = randomY + "px";
+          noBtn.style.transition =
+            "all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+        }
+
+        // Create sparkles at button position
+        const rect = noBtn.getBoundingClientRect();
+        createSparkle(rect.left + rect.width / 2, rect.top + rect.height / 2);
+      }
+
+      // Add shake animation and other effect animations
+      const style = document.createElement("style");
+      style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-10px) rotate(-5deg); }
+                75% { transform: translateX(10px) rotate(5deg); }
+            }
+            @keyframes spin {
+                0% { transform: rotate(0deg) scale(1); }
+                50% { transform: rotate(180deg) scale(1.1); }
+                100% { transform: rotate(360deg) scale(1); }
+            }
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.15); }
+            }
+            @keyframes bounce {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-15px); }
+            }
+            @keyframes wiggle {
+                0%, 100% { transform: rotate(0deg); }
+                25% { transform: rotate(-5deg); }
+                75% { transform: rotate(5deg); }
+            }
+            @keyframes rotate {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(720deg); }
+            }
+            @keyframes jiggle {
+                0%, 100% { transform: translateY(0) translateX(0); }
+                20% { transform: translateY(-5px) translateX(-3px); }
+                40% { transform: translateY(5px) translateX(3px); }
+                60% { transform: translateY(-5px) translateX(3px); }
+                80% { transform: translateY(5px) translateX(-3px); }
+            }
+            @keyframes throb {
+                0%, 100% { transform: scale(1); opacity: 1; }
+                50% { transform: scale(0.9); opacity: 0.7; }
+            }
+        `;
+      document.head.appendChild(style);
+
+      function sayYes() {
+        const modal = document.getElementById("modal");
+        const icon = document.getElementById("modalIcon");
+        const title = document.getElementById("modalTitle");
+        const body = document.getElementById("modalBody");
+
+        icon.textContent = "💖";
+        title.textContent = "You Said Yes! 🎉";
+
+        body.innerHTML = `
+                <div class="bouquet">💐🌹💕🌹💐</div>
+                
+                <div class="photo-gallery">
+                    <div class="photo-frame">
+                        <img src="IMG_2572.JPG" alt="Beautiful You">
+                        <div class="photo-caption">Stunning & Confident ✨</div>
+                    </div>
+                    <div class="photo-frame">
+                        <img src="IMG_2554.JPG" alt="Radiant You">
+                        <div class="photo-caption">Pure Radiance 💫</div>
+                    </div>
+                    <div class="photo-frame">
+                        <img src="IMG_2079.JPG" alt="Sweet Memories">
+                        <div class="photo-caption">Forever Beautiful 🌹</div>
+                    </div>
+                </div>
+
+                <div class="love-message">
+                    <p class="modal-text">
+                        You for no talk yes na werey. I don't take it lightly at all. You're special to me, your heart, your presence, the way you make things feel softer and brighter, sometimes annoying but just being by you is sometimes all i need. 💕
+                    </p>
+                    <p class="modal-text">
+                        I feel lucky to call you my girl, and I'm grateful that out of everyone, you chose me. Thank you for being you, my princess.🌹✨
+                    </p>
+                </div>
+            `;
+
+        modal.style.display = "flex";
+
+        // Enhanced confetti effect
+        createEnhancedConfetti();
+      }
+
+      function closeModal() {
+        document.getElementById("modal").style.display = "none";
+      }
+
+      function createEnhancedConfetti() {
+        const symbols = [
+          "❤️",
+          "💕",
+          "💖",
+          "💗",
+          "💝",
+          "💓",
+          "🌹",
+          "🌸",
+          "💐",
+          "✨",
+          "⭐",
+          "💫",
+          "🎉",
+        ];
+
+        for (let i = 0; i < 100; i++) {
+          setTimeout(() => {
+            const confetti = document.createElement("div");
+            confetti.style.position = "fixed";
+            confetti.style.left = Math.random() * 100 + "vw";
+            confetti.style.top = "-50px";
+            confetti.style.fontSize = Math.random() * 25 + 20 + "px";
+            confetti.textContent =
+              symbols[Math.floor(Math.random() * symbols.length)];
+            confetti.style.zIndex = "99999";
+            confetti.style.pointerEvents = "none";
+            confetti.style.animation = `confettiFall ${Math.random() * 3 + 2}s linear`;
+            confetti.style.filter = `drop-shadow(0 0 10px rgba(255, 105, 180, 0.8))`;
+
+            document.body.appendChild(confetti);
+
+            setTimeout(() => confetti.remove(), 5000);
+          }, i * 30);
+        }
+      }
+
+      // Add confetti animation
+      const confettiStyle = document.createElement("style");
+      confettiStyle.textContent = `
+            @keyframes confettiFall {
+                0% {
+                    transform: translateY(-50px) rotate(0deg) scale(0);
+                    opacity: 0;
+                }
+                10% {
+                    opacity: 1;
+                    transform: translateY(0) rotate(45deg) scale(1);
+                }
+                90% {
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(100vh) rotate(720deg) scale(0.5);
+                    opacity: 0;
+                }
+            }
+        `;
+      document.head.appendChild(confettiStyle);
+
+      // Close modal on outside click
+      window.onclick = function (event) {
+        const modal = document.getElementById("modal");
+        if (event.target === modal) {
+          closeModal();
+        }
+      };
+
+      // Initialize effects
+      window.addEventListener("load", () => {
+        createParticles();
+        animateFollower();
+      });
+
+      // Add card tilt effect on mouse move
+      const cards = document.querySelectorAll(".card");
+      cards.forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+
+          const rotateX = (y - centerY) / 10;
+          const rotateY = (centerX - x) / 10;
+
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-20px) scale(1.03)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform =
+            "perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)";
+        });
+      });
+    </script>
+  </body>
+</html>
